@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Panel</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(165, 163, 42); color: white;">
+        <a class="navbar-brand" href="#" style="color: white;">User Panel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#" style="color: white;">Welcome, {{ session['username'] }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('logout') }}" style="color: white;">Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+          <!-- Navigation Menu -->
+          <nav class="col-md-2 d-none d-md-block bg-light sidebar" style="height: 400px;">
+            <div class="sidebar-sticky">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active" href="/user_home">
+                    Profile
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                   Prediction
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    history
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+      
+          <!-- Content Area -->
+          <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Breast Cancer Prediction</h1>
+            </div>
+      
+            <div class="row">
+              <div class="col-md-6">
+                <div class="container">
+                  
+                  <form method="POST" action="/predict">
+                   
+                  <div class="form-group">
+                    <label for="radius_m">radius mean</label>
+                    <input type="text" class="form-control" id="radius_m" name="radius_m" required placeholder="A number in range [6.98 - 28.1] ">
+                      </div>
+                      
+                      <div class="form-group">
+                        <label for="texture_m">texture mean</label>
+                        <input type="text" class="form-control" id="texture_m" name="texture_m" required placeholder="A number in range [9.71-39.3] ">
+                          </div>
+
+                      <div class="form-group">
+                        <label for="perimeter_m">perimeter mean</label>
+                        <input type="text" class="form-control" id="perimeter_m" name="perimeter_m" required placeholder="A number in range [43.8-189] ">
+                      </div>
+                      <div class="form-group">
+                        <label for="area_m">area mean</label>
+                        <input type="text" class="form-control" id="area_m" name="area_m" placeholder="A number in range [144-2500] " required >
+                      </div>
+                      <div class="form-group">
+                        <label for="smooth_m">smoothness mean</label>
+                        <input type="text" class="form-control" id="smooth_m" name="smooth_m" required placeholder="A number in range [0.05-0.16] ">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="compact_m">compactness mean</label>
+                            <input type="text" class="form-control" id="compact_m" name="compact_m" required placeholder="A number in range [0.02-0.35] ">
+                              </div>
+
+                      <div class="form-group">
+                        <label for="con_m">concavity mean</label>
+                        <input type="text" class="form-control" id="con_m" name="con_m" placeholder="A number in range [0-0.43] " required>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="cp_mean">concave points mean</label>
+                        <input type="text" class="form-control" id="cp_mean" name="cp_mean" required placeholder="A number in range [0-0.2] ">
+                          </div>
+
+                      <div class="form-group">
+                        <label for="symmetry_mean">symmetry mean</label>
+                        <input type="text" class="form-control" id="symmetry_mean" name="symmetry_mean" placeholder="A number in range [0.11-0.3]" required>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="fractal_mean">fractal dimension mean</label>
+                          <input type="text" class="form-control" id="fractal_mean" name="fractal_mean" required placeholder="A number in range [0.05-0.1] ">
+                            </div>
+        
+ <div class="form-group">
+        <label for="radius_se">radius se</label>
+        <input type="text" id="radius_se" name="radius_se" placeholder="Typically in [0.11-2.87]" class="form-control">
+        </div>
+                          
+
+        <div class="form-group">
+          <label for="texture_se">texture se</label>
+          <input type="text" class="form-control" id="texture_se" name="texture_se" required placeholder="A number in range [0.36-4.88] ">
+            </div>
+
+            <div class="form-group">
+              <label for="pm_se">perimeter se</label>
+              <input type="text" class="form-control" id="pm_se" name="pm_se" required placeholder="A number in range [0.76-22] ">
+                </div>
+
+                <div class="form-group">
+                  <label for="area_se">area se</label>
+                  <input type="text" class="form-control" id="area_se" name="area_se" required placeholder="A number in range [6.8-542] ">
+                    </div>
+                    <div class="form-group">
+                      <label for="smooth_se">smoothness se</label>
+                      <input type="text" class="form-control" id="smooth_se" name="smooth_se" required placeholder="A number in range [0-0.03] ">
+                        </div>
+                        <div class="form-group">
+                          <label for="compact_se">compactness se</label>
+                          <input type="text" class="form-control" id="compact_se" name="compact_se" required placeholder="A number in range [0-0.14] ">
+                            </div>
+                            <div class="form-group">
+                              <label for="con_se">concavity se</label>
+                              <input type="text" class="form-control" id="con_se" name="con_se" required placeholder="A number in range [0-0.4] ">
+                                </div>
+                                <div class="form-group">
+                                  <label for="cp_se">concave points se</label>
+                                  <input type="text" class="form-control" id="cp_se" name="cp_se" required placeholder="A number in range [0-0.05] ">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="symmetry_se">symmetry se</label>
+                                      <input type="text" class="form-control" id="symmetry_se" name="symmetry_se" required placeholder="A number in range [0.01-0.08] ">
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="fractal_se">fractal dimension se</label>
+                                          <input type="text" class="form-control" id="fractal_se" name="fractal_se" required placeholder="A number in range [0-0.03] ">
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="radius_worst">radius worst</label>
+                                              <input type="text" class="form-control" id="radius_worst" name="radius_worst" required placeholder="A number in range [7.93-36] ">
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="texture_worst">texture worst</label>
+                                                  <input type="text" class="form-control" id="texture_worst" name="texture_worst" required placeholder="A number in range [12-49.5] ">
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="pm_worst">perimeter worst</label>
+                                                      <input type="text" class="form-control" id="pm_worst" name="pm_worst" required placeholder="A number in range [50.4-251] ">
+                                                        </div>
+                                                        <div class="form-group">
+                                                          <label for="area_worst">area worst</label>
+                                                          <input type="text" class="form-control" id="area_worst" name="area_worst" required placeholder="A number in range [185-42500] ">
+                                                            </div>
+                                                            <div class="form-group">
+                                                              <label for="smooth_worst">smoothness worst</label>
+                                                              <input type="text" class="form-control" id="smooth_worst" name="smooth_worst" required placeholder="A number in range [0.07-0.22] ">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                  <label for="compact_worst">compactness worst</label>
+                                                                  <input type="text" class="form-control" id="compact_worst" name="compact_worst" required placeholder="A number in range [0.03-1.06] ">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                      <label for="con_worst">concavity worst</label>
+                                                                      <input type="text" class="form-control" id="con_worst" name="con_worst" required placeholder="A number in range [0-1.25] ">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                          <label for="concavity_worst">concave points worst</label>
+                                                                          <input type="text" class="form-control" id="concavity_worst" name="concavity_worst" required placeholder="A number in range [0-0.29] ">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                              <label for="symmetry_worst">symmetry worst</label>
+                                                                              <input type="text" class="form-control" id="symmetry_worst" name="symmetry_worst" required placeholder="A number in range [0.16-0.66] ">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                  <label for="fractal_worst">fractal dimension worst</label>
+                                                                                  <input type="text" class="form-control" id="fractal_worst" name="fractal_worst" required placeholder="A number in range [0.06-0.21] ">
+                                                                                    </div>
+                                                                                    
+                                                                                    <button type="submit" class="btn btn-primary">Predict</button>
+                                                                                  </form>
+                                                                          
+                                                                                            
+                                                                                            
+                                                                                        </div>
+                                                                                        <div class="col-md-6">
+                                                                                          <!-- Add content for the second column here -->
+                                                                                        </div>
+                                                                                      </div>
+                                                                                
+                                                                                    </main>
+                                                                                  </div>
+                                                                                </div>
+                                                                                
+                                                                          </body>
+                                                                          </html>
+                                                                          

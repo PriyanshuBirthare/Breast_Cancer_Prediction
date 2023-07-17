@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Panel</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(165, 163, 42); color: white;">
+        <a class="navbar-brand" href="#" style="color: white;">User Panel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#" style="color: white;">Welcome, {{ session['username'] }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('logout') }}" style="color: white;">Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+          <!-- Navigation Menu -->
+          <nav class="col-md-2 d-none d-md-block bg-light sidebar" style="height: 400px;">
+            <div class="sidebar-sticky">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active" href="/user_home">
+                    Profile
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/pred">
+                   Prediction
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    history
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+      
+          <!-- Content Area -->
+          <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Profile</h1>
+            </div>
+      
+            <div class="row">
+              <div class="col-md-6">
+                <!DOCTYPE html>
+                <html>
+                  <head>
+                    <title>Breast Cancer Data</title>
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                  </head>
+                  <body>
+                    <div class="container">
+                      <h1>Breast Cancer Data</h1>
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>radius mean</th>
+                            <th>texture mean</th>
+                            <th>perimeter mean</th>
+                            <th>area mean</th>
+                            <th>smoothness mean</th>
+                            <th>compactness mean</th>
+                            <th>concavity mean</th>
+                            <th>concave points mean</th>
+                            <th>symmetry mean</th>
+                            <th>fractal dimension mean</th>
+                            <th>radius se</th>
+                            <th>texture se</th>
+                            <th>perimeter se</th>
+                            <th>area se</th>
+                            <th>smoothness se</th>
+                            <th>compactness se</th>
+                            <th>concavity se</th>
+                            <th>concave points se</th>
+                            <th>symmetry se</th>
+                            <th>fractal dimension se</th>
+                            <th>radius worst</th>
+                            <th>texture worst</th>
+                            <th>perimeter worst</th>
+                            <th>area worst</th>
+                            <th>smoothness worst</th>
+                            <th>compactness worst</th>
+                            <th>concavity worst</th>
+                            <th>concave points worst</th>
+                            <th>symmetry worst</th>
+                            <th>fractal dimension worst</th>
+                            
+                            
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for row in data %}
+                          <tr>
+                            <td>{{ row[0] }}</td>
+                            <td>{{ row[1] }}</td>
+                            <td>{{ row[2] }}</td>
+                            <td>{{ row[3] }}</td>
+                            <td>{{ row[4] }}</td>
+                            <td>{{ row[5] }}</td>
+                            <td>{{ row[6] }}</td>
+                            <td>{{ row[7] }}</td>
+                            <td>{{ row[8] }}</td>
+                            <td>{{ row[9] }}</td>
+                            <td>{{ row[10] }}</td>
+                            <td>{{ row[11] }}</td>
+                            <td>{{ row[12] }}</td>
+                            <td>{{ row[13] }}</td>
+                            <td>{{ row[14] }}</td>
+                            <td>{{ row[15] }}</td>
+                            <td>{{ row[16] }}</td>
+                            <td>{{ row[17] }}</td>
+                            <td>{{ row[18] }}</td>
+                            <td>{{ row[19] }}</td>
+                            <td>{{ row[20] }}</td>
+                            <td>{{ row[21] }}</td>
+                            <td>{{ row[22] }}</td>
+                            <td>{{ row[23] }}</td>
+                            <td>{{ row[24] }}</td>
+                            <td>{{ row[25] }}</td>
+                            <td>{{ row[26] }}</td>
+                            <td>{{ row[27] }}</td>
+                            <td>{{ row[28] }}</td>
+                            <td>{{ row[29] }}</td>
+                          
+
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </body>
+                </html>
+                
+                  
+              </div>
+              <div class="col-md-6">
+                <!-- Add content for the second column here -->
+              </div>
+            </div>
+      
+          </main>
+        </div>
+      </div>
+      
+</body>
+</html>
